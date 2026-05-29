@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { Search, MapPin, ArrowRight, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui';
@@ -11,12 +11,13 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  unstable_setRequestLocale(locale);
+
   const t  = await getTranslations({ locale, namespace: 'home' });
   const ts = await getTranslations({ locale, namespace: 'sectors' });
 
   return (
     <div>
-      {/* HERO */}
       <section className="bg-gradient-to-br from-jobary-blue to-blue-900 text-white py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('hero_title')}</h1>
@@ -38,7 +39,6 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
       </section>
 
-      {/* SECTORS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('sectors_title')}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -52,7 +52,6 @@ export default async function HomePage({ params: { locale } }: { params: { local
         </div>
       </section>
 
-      {/* FOR EMPLOYERS CTA */}
       <section className="bg-jobary-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">

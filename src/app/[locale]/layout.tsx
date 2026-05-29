@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { locales } from '@/i18n';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -22,7 +23,9 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Pass locale explicitly so next-intl works during static generation
+  // Enable static rendering for this locale
+  unstable_setRequestLocale(locale);
+
   const messages = await getMessages({ locale });
   const isRtl = locale === 'ar';
 
