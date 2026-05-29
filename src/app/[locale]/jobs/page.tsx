@@ -1,11 +1,16 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
+import { JobSearch } from '@/components/jobs/JobSearch';
+import { Spinner } from '@/components/ui';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'Browse Jobs' };
 
 export default function JobsPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale);
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 text-center text-gray-500">
-      <h1 className="text-2xl font-bold mb-2">Jobs</h1>
-      <p>Coming soon — Phase 2 &amp; 3.</p>
-    </div>
+    <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+      <JobSearch locale={locale} />
+    </Suspense>
   );
 }

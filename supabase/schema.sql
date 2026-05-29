@@ -252,3 +252,11 @@ CREATE TRIGGER on_auth_user_created
 -- 1. "avatars"   — public, max 2MB, image/*
 -- 2. "cvs"       — private (seeker + employer with application), max 5MB, application/pdf
 -- 3. "logos"     — public, max 1MB, image/*
+
+-- ─── HELPER: increment applications count ────────────────────
+CREATE OR REPLACE FUNCTION increment_applications(job_id UUID)
+RETURNS void AS $$
+BEGIN
+  UPDATE public.jobs SET applications_count = applications_count + 1 WHERE id = job_id;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
