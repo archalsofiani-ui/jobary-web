@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "jobs": "تصفح الوظائف",
+    "employers": "لأصحاب العمل",
+    "postJob": "أضف وظيفة",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج",
+    "language": "English"
+  },
+  "home": {
+    "hero_title": "ابحث عن وظيفتك القادمة في المملكة العربية السعودية",
+    "hero_subtitle": "آلاف فرص العمل في جميع القطاعات — قدم طلبك في دقائق",
+    "search_placeholder": "المسمى الوظيفي أو المهارة",
+    "location_placeholder": "المدينة أو المنطقة",
+    "search_btn": "بحث عن وظائف",
+    "sectors_title": "تصفح حسب القطاع",
+    "featured_title": "وظائف مميزة",
+    "for_employers": "هل تبحث عن موظفين؟",
+    "post_job_cta": "أضف وظيفة مجاناً"
+  },
+  "sectors": {
+    "sales": "المبيعات",
+    "marketing": "التسويق",
+    "customer_service": "خدمة العملاء",
+    "admin": "الإدارة",
+    "it": "التقنية",
+    "engineering": "الهندسة",
+    "healthcare": "الرعاية الصحية",
+    "education": "التعليم",
+    "hospitality": "الضيافة",
+    "construction": "البناء والتشييد",
+    "logistics": "اللوجستيات",
+    "finance": "المالية"
+  },
+  "footer": {
+    "tagline": "مبني للقوى العاملة العربية",
+    "for_seekers": "لباحثي العمل",
+    "for_employers": "لأصحاب العمل",
+    "browse_jobs": "تصفح الوظائف",
+    "create_profile": "إنشاء ملف شخصي",
+    "upload_cv": "رفع السيرة الذاتية",
+    "post_job": "أضف وظيفة",
+    "pricing": "الأسعار",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "submit": "إرسال",
+    "back": "رجوع",
+    "next": "التالي",
+    "apply": "قدم الآن",
+    "view_all": "عرض الكل",
+    "required": "مطلوب"
+  }
+}

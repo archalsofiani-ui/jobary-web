@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --jobary-blue: #1F5C99;
+    --jobary-light: #D6E8F7;
+    --jobary-dark: #1A1A2E;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* RTL logical properties are handled by tailwindcss-rtl,
+     but keep font stack consistent for Arabic */
+  [dir="rtl"] body {
+    font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  }
+
+  [dir="ltr"] body {
+    font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}

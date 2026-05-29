@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Home",
+    "jobs": "Browse Jobs",
+    "employers": "For Employers",
+    "postJob": "Post a Job",
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "language": "العربية"
+  },
+  "home": {
+    "hero_title": "Find Your Next Job in Saudi Arabia",
+    "hero_subtitle": "Thousands of job opportunities across every sector — apply in minutes",
+    "search_placeholder": "Job title, skill, or keyword",
+    "location_placeholder": "City or region",
+    "search_btn": "Search Jobs",
+    "sectors_title": "Browse by Sector",
+    "featured_title": "Featured Jobs",
+    "for_employers": "Are you hiring?",
+    "post_job_cta": "Post a Job for Free"
+  },
+  "sectors": {
+    "sales": "Sales",
+    "marketing": "Marketing",
+    "customer_service": "Customer Service",
+    "admin": "Administration",
+    "it": "Technology",
+    "engineering": "Engineering",
+    "healthcare": "Healthcare",
+    "education": "Education",
+    "hospitality": "Hospitality",
+    "construction": "Construction",
+    "logistics": "Logistics",
+    "finance": "Finance"
+  },
+  "footer": {
+    "tagline": "Built for the Arab workforce",
+    "for_seekers": "For Job Seekers",
+    "for_employers": "For Employers",
+    "browse_jobs": "Browse Jobs",
+    "create_profile": "Create Profile",
+    "upload_cv": "Upload CV",
+    "post_job": "Post a Job",
+    "pricing": "Pricing",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "apply": "Apply Now",
+    "view_all": "View All",
+    "required": "Required"
+  }
+}
