@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Briefcase, Search, FileText, BookmarkCheck, User, LogOut } from 'lucide-react';
+import { Briefcase, Search, FileText, BookmarkCheck, User, LogOut, Bell, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { createClient } from '@/lib/supabase/client';
 import { signOut } from '@/lib/auth';
@@ -29,10 +29,11 @@ export function SeekerDashboard({ locale }: { locale: string }) {
   const t = {
     welcome: rtl ? 'مرحباً' : 'Welcome back',
     searchJobs: rtl ? 'بحث عن وظائف' : 'Search Jobs',
-    myApps: rtl ? 'طلباتي' : 'My Applications',
-    saved: rtl ? 'الوظائف المحفوظة' : 'Saved Jobs',
-    profile: rtl ? 'ملفي الشخصي' : 'My Profile',
-    logout: rtl ? 'تسجيل الخروج' : 'Log out',
+    myApps: rtl ? 'طلباتي' : 'Applications',
+    saved: rtl ? 'المحفوظات' : 'Saved',
+    profile: rtl ? 'ملفي' : 'My Profile',
+    alerts: rtl ? 'التنبيهات' : 'Job Alerts',
+    messages: rtl ? 'الرسائل' : 'Messages',
     noApps: rtl ? 'لم تقدم على أي وظيفة بعد' : "You haven't applied to any jobs yet",
     browseJobs: rtl ? 'تصفح الوظائف' : 'Browse Jobs',
     edit: rtl ? 'تعديل' : 'Edit',
@@ -51,7 +52,6 @@ export function SeekerDashboard({ locale }: { locale: string }) {
 
   return (
     <div className="min-h-screen bg-gray-50" dir={rtl ? 'rtl' : 'ltr'}>
-      {/* Top bar */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
           <Link href={`/${locale}`} className="flex items-center gap-2 text-jobary-blue font-bold">
@@ -69,23 +69,23 @@ export function SeekerDashboard({ locale }: { locale: string }) {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
-        {/* Quick actions */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-8">
           {[
-            { icon: Search, label: t.searchJobs, href: `/${locale}/jobs`, color: 'bg-blue-50 text-blue-600' },
-            { icon: FileText, label: t.myApps, href: `/${locale}/dashboard/seeker/applications`, color: 'bg-green-50 text-green-600' },
-            { icon: BookmarkCheck, label: t.saved, href: `/${locale}/dashboard/seeker/saved`, color: 'bg-yellow-50 text-yellow-600' },
-            { icon: User, label: t.profile, href: `/${locale}/dashboard/seeker/profile`, color: 'bg-purple-50 text-purple-600' },
+            { icon: Search,        label: t.searchJobs, href: `/${locale}/jobs`,                            color: 'bg-blue-50 text-blue-600' },
+            { icon: FileText,      label: t.myApps,     href: `/${locale}/dashboard/seeker/applications`,   color: 'bg-green-50 text-green-600' },
+            { icon: BookmarkCheck, label: t.saved,       href: `/${locale}/dashboard/seeker/saved`,          color: 'bg-yellow-50 text-yellow-600' },
+            { icon: MessageCircle, label: t.messages,    href: `/${locale}/messages`,                        color: 'bg-teal-50 text-teal-600' },
+            { icon: Bell,          label: t.alerts,      href: `/${locale}/alerts`,                          color: 'bg-orange-50 text-orange-600' },
+            { icon: User,          label: t.profile,     href: `/${locale}/dashboard/seeker/profile`,        color: 'bg-purple-50 text-purple-600' },
           ].map(({ icon: Icon, label, href, color }) => (
             <Link key={label} href={href}
-              className="bg-white rounded-xl border border-gray-200 p-4 flex flex-col items-center gap-2 hover:shadow-md transition-all text-center">
-              <div className={`p-2.5 rounded-full ${color}`}><Icon className="h-5 w-5" /></div>
-              <span className="text-xs font-medium text-gray-700">{label}</span>
+              className="bg-white rounded-xl border border-gray-200 p-3 flex flex-col items-center gap-1.5 hover:shadow-md transition-all text-center">
+              <div className={`p-2 rounded-full ${color}`}><Icon className="h-4 w-4" /></div>
+              <span className="text-xs font-medium text-gray-700 leading-tight">{label}</span>
             </Link>
           ))}
         </div>
 
-        {/* Profile card */}
         {profile && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
             <div className="flex items-center justify-between mb-3">
@@ -99,12 +99,18 @@ export function SeekerDashboard({ locale }: { locale: string }) {
               <div>
                 <p className="font-semibold text-gray-900">{profile.name_en || profile.name_ar}</p>
                 <p className="text-sm text-gray-500">{profile.city} · {profile.nationality}</p>
+                {profile.skills?.length > 0 && (
+                  <div className="flex gap-1 mt-1 flex-wrap">
+                    {profile.skills.slice(0, 3).map((s: string) => (
+                      <span key={s} className="text-xs bg-jobary-light text-jobary-blue px-2 py-0.5 rounded-full">{s}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         )}
 
-        {/* Applications placeholder */}
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <h2 className="font-bold text-gray-900 text-sm mb-4">{t.myApps}</h2>
           <div className="text-center py-8 text-gray-400">
