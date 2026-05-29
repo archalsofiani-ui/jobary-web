@@ -1,12 +1,9 @@
-const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'your-project.supabase.co', // replace with your Supabase project URL
-    ],
+    domains: ['rxzbtatmbvnpnunppahu.supabase.co'],
   },
 };
 
+const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 module.exports = withNextIntl(nextConfig);
