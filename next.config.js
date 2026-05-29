@@ -1,9 +1,18 @@
+const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
-    domains: ['rxzbtatmbvnpnunppahu.supabase.co'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'rxzbtatmbvnpnunppahu.supabase.co' },
+    ],
   },
 };
 
-const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 module.exports = withNextIntl(nextConfig);

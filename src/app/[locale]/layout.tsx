@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { locales } from '@/i18n';
@@ -10,7 +9,6 @@ import '../globals.css';
 export const metadata: Metadata = {
   title: { default: 'Jobary — Jobs in Saudi Arabia', template: '%s | Jobary' },
   description: 'Find jobs and hire talent across Saudi Arabia — in Arabic and English.',
-  keywords: ['jobs', 'saudi arabia', 'وظائف', 'السعودية', 'hiring', 'career'],
 };
 
 export function generateStaticParams() {
@@ -24,8 +22,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  if (!locales.includes(locale as any)) notFound();
-
   const messages = await getMessages();
   const isRtl = locale === 'ar';
 
@@ -39,7 +35,7 @@ export default async function LocaleLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-gray-50 font-sans antialiased">
+      <body className="min-h-screen flex flex-col bg-gray-50 antialiased">
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           <main className="flex-1">{children}</main>
